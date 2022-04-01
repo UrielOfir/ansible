@@ -68,6 +68,9 @@
   - name: run app as pm2 process
     shell: cd /home/uriel/bootcamp-app && pm2 start src/index.js
     register: out
+    tags:
+      - run
+
   - debug: var=out.stdout_lines
 
 
