@@ -28,7 +28,7 @@
 
   - name: Install packages based on package.json using the npm
     npm:
-      path: /home/uriel/bootcamp-app
+      path: /home/{{ansible_user}}/bootcamp-app
       state: present
 
   - name: add .env file
@@ -56,7 +56,7 @@
          - env
 
   - name: run initdb script
-    shell: cd /home/uriel/bootcamp-app && npm run initdb
+    shell: cd /home/{{ansible_user}}/bootcamp-app && npm run initdb
     register: initdb
     tags:
       - initdb
@@ -66,7 +66,7 @@
       - initdb
 
   - name: run app as pm2 process
-    shell: cd /home/uriel/bootcamp-app && pm2 start src/index.js
+    shell: cd /home/{{ansible_user}}/bootcamp-app && pm2 start src/index.js
     register: out
     tags:
       - run
