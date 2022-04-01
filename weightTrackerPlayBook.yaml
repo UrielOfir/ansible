@@ -30,16 +30,6 @@
     npm:
       path: /home/uriel/bootcamp-app
       state: present
-  
-  - name: run initdb script
-    shell: cd /home/uriel/bootcamp-app && npm run initdb
-    register: initdb
-    tags:
-      - initdb
-
-  - debug: msg="{{ initdb.stdout }}"
-    tags:
-      - initdb
 
   - name: add .env file
     shell: | 
@@ -64,6 +54,16 @@
     
     tags:
          - env
+
+  - name: run initdb script
+    shell: cd /home/uriel/bootcamp-app && npm run initdb
+    register: initdb
+    tags:
+      - initdb
+
+  - debug: msg="{{ initdb.stdout }}"
+    tags:
+      - initdb
 
   - name: run app as pm2 process
     shell: cd /home/uriel/bootcamp-app && pm2 start src/index.js
