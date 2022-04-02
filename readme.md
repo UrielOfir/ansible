@@ -18,6 +18,7 @@ With this ansible playbook you can run the Weight Tracker app on the azure resou
     ansible_user=<user name> 
     ansible_ssh_pass=<password>
 
+You should add this file to your `.gitigonre` because it contains secret data.
 (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
 6. Add the file `vars`. This file should contain this data:
@@ -30,6 +31,7 @@ With this ansible playbook you can run the Weight Tracker app on the azure resou
     okta_client_id: "<your okta client id>"
     okta_client_secret: "<your okta client secret>"
 
+You should add this file to your `.gitigonre` because it contains secret data.
 (The postgres user name and password are the same as the one you used to create the service, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
 7. Add the load balancer public ip to your okta app sign-in redirect URIs.
