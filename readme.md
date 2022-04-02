@@ -12,17 +12,13 @@ With this ansible playbook you can run the Weight Tracker app on the azure resou
     <vm2 ip> host="<vm2 ip>"
     etc...
 
-    [all:vars]
-    ansible_connection=ssh
-    ansible_port=22:wq
-    ansible_user=<user name> 
-    ansible_ssh_pass=<password>
 
 You should add this file to your `.gitigonre` because it contains secret data.
 (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
 6. Add the file `vars`. This file should contain this data:
     ```
+    # the host variable is in the inventory file
     pghost: "<your postgresql service address>
     pg_username: "<postgresql username>"
     pg_password: "<postgresql password>"
@@ -30,6 +26,10 @@ You should add this file to your `.gitigonre` because it contains secret data.
     okta_url: "<your okta url>"
     okta_client_id: "<your okta client id>"
     okta_client_secret: "<your okta client secret>"
+    ansible_connection: "ssh"
+    ansible_port: "22"
+    ansible_user: "<user name>" 
+    ansible_ssh_pass: "<password>"
 
 You should add this file to your `.gitigonre` because it contains secret data.
 (The postgres user name and password are the same as the one you used to create the service, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
