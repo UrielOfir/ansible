@@ -2,7 +2,7 @@
 With this ansible playbook you can run the Weight Tracker app on the azure resources that are built in this Terraform module- https://github.com/UrielOfir/Terraform.
 
 
-1. Connect to the ansible VM you have in your environment. (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files)
+1. Connect to the ansible VM you have in your environment. (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files and your Terraform output.)
 2. Clone this repo to your machine- `git clone https://github.com/UrielOfir/ansible`.
 3. [Install ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
 4. Run the command `export ANSIBLE_HOST_KEY_CHECKING=False` to enable connection to the hosts machines with user name and password.
@@ -16,7 +16,7 @@ With this ansible playbook you can run the Weight Tracker app on the azure resou
 You should add this file to your `.gitigonre` because it contains secret data.
 (The user name and password are the same as the one you used to create the VM, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
-6. Add the file `vars`. This file should contain this data:
+6. In `ansible` directory add the file `vars`. This file should contain this data:
     ```
     # the host variable is in the inventory file
     pghost: "<your postgresql service address>
@@ -34,6 +34,6 @@ You should add this file to your `.gitigonre` because it contains secret data.
 You should add this file to your `.gitigonre` because it contains secret data.
 (The postgres user name and password are the same as the one you used to create the service, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
-7. Add the load balancer public ip to your okta app sign-in redirect URIs.
+7. In `ansible` directory add the load balancer public ip to your okta app sign-in redirect URIs.
 
 8. Run the command `ansible-playbook -i inventory weightTrackerPlayBook.yaml`.
