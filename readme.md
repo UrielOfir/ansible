@@ -34,6 +34,6 @@ You should add this file to your `.gitigonre` because it contains secret data.
 You should add this file to your `.gitigonre` because it contains secret data.
 (The postgres user name and password are the same as the one you used to create the service, you can find them in the `.tfvars` files on your Terraform pfoject, or in the terraform output)
 
-7. In `ansible` directory add the load balancer public ip to your okta app sign-in redirect URIs.
+7. Add the load balancer public ip to your okta app sign-in redirect URIs.
 
 8. Run the command `ansible-playbook -i inventory weightTrackerPlayBook.yaml`.

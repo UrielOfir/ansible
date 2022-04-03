@@ -63,6 +63,7 @@
       - initdb
 
   - debug: msg="{{ initdb.stdout }}"
+    run_once: true
     tags:
       - initdb
 
