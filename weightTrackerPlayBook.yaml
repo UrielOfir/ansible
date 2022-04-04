@@ -70,6 +70,9 @@
     tags:
       - initdb
 
+  - name: pm2 kill
+    shell: pm2 kill
+
   - name: run app as pm2 process
     shell: cd /home/{{ansible_user}}/bootcamp-app && pm2 start src/index.js
     register: out
