@@ -7,12 +7,15 @@
   
   tasks:
   
-  - name: Clone a github repository
-    git:
-      repo: https://github.com/UrielOfir/bootcamp-app
-      dest: /home/uriel/bootcamp-app
-      clone: yes
-      update: yes
+  # - name: Clone a github repository
+  #   git:
+  #     repo: https://github.com/UrielOfir/bootcamp-app
+  #     dest: /home/uriel/bootcamp-app
+  #     clone: yes
+  #     update: yes
+
+  - name: Copy the artifact from master to machines
+       copy: src=~/myagent/_work/2/WebApp/ dest=/home/{{ansible_user}}/bootcamp-app
 
   - name: install node 
     shell: |
