@@ -14,13 +14,13 @@
   #     clone: yes
   #     update: yes
   
-  # - name: Recursively remove WebApp directory
-  #   ansible.builtin.file:
-  #     path: /home/{{ansible_user}}/WebApp
-  #     state: absent
+  - name: Recursively remove WebApp directory
+    ansible.builtin.file:
+      path: /home/{{ansible_user}}/WebApp
+      state: absent
 
-  # - name: Copy the artifact from master to machines
-  #   copy: src={{code_path}} dest=/home/{{ansible_user}}
+  - name: Copy the artifact from master to machines
+    copy: src={{code_path}} dest=/home/{{ansible_user}}
 
   - name: install node 
     shell: |
