@@ -16,11 +16,11 @@
   
   - name: Recursively remove bootcamp directory
     ansible.builtin.file:
-      path: /home/{{ansible_user}}/bootcamp-app
+      path: /home/{{ansible_user}}/WebApp
       state: absent
 
   - name: Copy the artifact from master to machines
-    copy: src={{code_path}} dest=/home/{{ansible_user}}/bootcamp-app
+    copy: src={{code_path}} dest=/home/{{ansible_user}}/WebApp
 
   - name: install node 
     shell: |
