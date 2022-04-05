@@ -81,7 +81,7 @@
       - kill
 
   - name: run app as pm2 process
-    shell: cd /home/{{ansible_user}}/bootcamp-app && pm2 start src/index.js
+    shell: cd /home/{{ansible_user}}/WebApp && pm2 start src/index.js
     register: out
     tags:
       - run
