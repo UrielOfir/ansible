@@ -58,14 +58,14 @@
       OKTA_ORG_URL={{okta_url}}
       OKTA_CLIENT_ID={{okta_client_id}}
       OKTA_CLIENT_SECRET={{okta_client_secret}}
-      " > bootcamp-app/.env;
+      " > WebApp/.env;
     
     tags:
          - env
 
   - name: run initdb script
     run_once: true
-    shell: cd /home/{{ansible_user}}/bootcamp-app && npm run initdb
+    shell: cd /home/{{ansible_user}}/WebApp && npm run initdb
     register: initdb
     tags:
       - initdb
