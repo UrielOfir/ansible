@@ -14,7 +14,7 @@
   #     clone: yes
   #     update: yes
   - name: remove before Copy
-    sell: rm -rf /home/{{ansible_user}}/bootcamp-app
+    shell: rm -rf /home/{{ansible_user}}/bootcamp-app
 
   - name: Copy the artifact from master to machines
     copy: src={{code_path}} dest=/home/{{ansible_user}}/bootcamp-app
