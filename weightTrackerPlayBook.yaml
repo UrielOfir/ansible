@@ -13,8 +13,10 @@
   #     dest: /home/uriel/bootcamp-app
   #     clone: yes
   #     update: yes
-  - name: remove before Copy
-    shell: rm -rf /home/{{ansible_user}}/bootcamp-app
+  
+  - name: Recursively remove bootcamp directory
+    path: /home/{{ansible_user}}/bootcamp-app
+    state: absent
 
   - name: Copy the artifact from master to machines
     copy: src={{code_path}} dest=/home/{{ansible_user}}/bootcamp-app
