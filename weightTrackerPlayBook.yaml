@@ -36,7 +36,7 @@
 
   - name: Install packages based on package.json using the npm
     npm:
-      path: /home/{{ansible_user}}/bootcamp-app
+      path: /home/{{ansible_user}}/WebApp
       state: present
 
   - name: add .env file
