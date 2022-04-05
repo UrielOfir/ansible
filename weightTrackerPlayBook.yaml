@@ -15,7 +15,7 @@
   #     update: yes
 
   - name: Copy the artifact from master to machines
-    copy: src=~/myagent/_work/1/s/ dest=/home/{{ansible_user}}/bootcamp-app
+    copy: src={{code_path}} dest=/home/{{ansible_user}}/bootcamp-app
 
   - name: install node 
     shell: |
