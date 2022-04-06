@@ -63,17 +63,17 @@
     tags:
          - env
 
-  # - name: run initdb script
-  #   run_once: true
-  #   shell: cd /home/{{ansible_user}}/WebApp && npm run initdb
-  #   register: initdb
-  #   tags:
-  #     - initdb
+  - name: run initdb script
+    run_once: true
+    shell: cd /home/{{ansible_user}}/WebApp && npm run initdb
+    register: initdb
+    tags:
+      - initdb
 
-  # - debug: msg="{{ initdb.stdout }}"
-  #   run_once: true
-  #   tags:
-  #     - initdb
+  - debug: msg="{{ initdb.stdout }}"
+    run_once: true
+    tags:
+      - initdb
 
   - name: pm2 kill
     shell: pm2 kill
