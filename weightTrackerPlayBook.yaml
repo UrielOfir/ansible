@@ -24,7 +24,10 @@
 
   - name: install node 
     shell: |
-      curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs
+      if ! command -v node
+      then
+        curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs
+      fi
 
   - name: install pm2
     npm:
