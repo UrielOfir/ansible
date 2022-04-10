@@ -16,11 +16,9 @@
 
   - name: install unzip
     script: |
-      if ! command -v unzip
-      then
-        apt-get update
-        apt-get install unzip
-      fi
+      apt-get update
+      apt-get install unzip
+
 
   - name: Copy the artifact from master to machines
     copy: src={{zip_path}} dest=/home/{{ansible_user}}
