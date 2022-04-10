@@ -16,7 +16,8 @@
 
   - name: install unzip
     script: |
-      if ! command -v unzip; then
+      if ! command -v unzip
+      then
         apt-get update
         apt-get install unzip
       fi
