@@ -28,74 +28,74 @@
   - name: unzip code
     shell: cd ~ ; unzip zipped/zippedApp.zip -d ~/WebApp
 
-  # - name: install node 
-  #   shell: |
-  #     if ! command -v node; then
-  #       curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs
-  #     fi
+  - name: install node 
+    shell: |
+      if ! command -v node; then
+        curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs
+      fi
 
-  # - name: install pm2
-  #   npm:
-  #     name: pm2
-  #     global: yes
+  - name: install pm2
+    npm:
+      name: pm2
+      global: yes
 
-  # - name: install pm2 startup
-  #   shell: pm2 startup && sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u uriel --hp /home/{{ansible_user}}
+  - name: install pm2 startup
+    shell: pm2 startup && sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u uriel --hp /home/{{ansible_user}}
 
-  # - name: Install packages based on package.json using the npm
-  #   npm:
-  #     path: /home/{{ansible_user}}/s
-  #     state: present
+  - name: Install packages based on package.json using the npm
+    npm:
+      path: /home/{{ansible_user}}/s
+      state: present
 
-  # - name: add .env file
-  #   shell: | 
-  #     echo "
-  #     # Host configuration
-  #     PORT=8080
-  #     HOST={{host}}
-  #     # Postgres configuration
-  #     PGHOST={{pghost}}
-  #     PGUSERNAME={{pg_username}}
-  #     PGDATABASE=postgres
-  #     PGPASSWORD={{pg_password}}
-  #     PGPORT=5432
-  #     HOST_URL=http://{{LB_ip}}:8080
-  #     COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
-  #     NODE_ENV=development
-  #     # Okta configuration
-  #     OKTA_ORG_URL={{okta_url}}
-  #     OKTA_CLIENT_ID={{okta_client_id}}
-  #     OKTA_CLIENT_SECRET={{okta_client_secret}}
-  #     " > WebApp/.env;
+  - name: add .env file
+    shell: | 
+      echo "
+      # Host configuration
+      PORT=8080
+      HOST={{host}}
+      # Postgres configuration
+      PGHOST={{pghost}}
+      PGUSERNAME={{pg_username}}
+      PGDATABASE=postgres
+      PGPASSWORD={{pg_password}}
+      PGPORT=5432
+      HOST_URL=http://{{LB_ip}}:8080
+      COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+      NODE_ENV=development
+      # Okta configuration
+      OKTA_ORG_URL={{okta_url}}
+      OKTA_CLIENT_ID={{okta_client_id}}
+      OKTA_CLIENT_SECRET={{okta_client_secret}}
+      " > WebApp/.env;
     
-  #   tags:
-  #        - env
+    tags:
+         - env
 
-  # - name: run initdb script
-  #   run_once: true
-  #   shell: cd /home/{{ansible_user}}/WebApp && npm run initdb
-  #   register: initdb
-  #   tags:
-  #     - initdb
+  - name: run initdb script
+    run_once: true
+    shell: cd /home/{{ansible_user}}/WebApp && npm run initdb
+    register: initdb
+    tags:
+      - initdb
 
-  # - debug: msg="{{ initdb.stdout }}"
-  #   run_once: true
-  #   tags:
-  #     - initdb
+  - debug: msg="{{ initdb.stdout }}"
+    run_once: true
+    tags:
+      - initdb
 
-  # - name: pm2 kill
-  #   shell: pm2 kill
-  #   tags:
-  #     - kill
+  - name: pm2 kill
+    shell: pm2 kill
+    tags:
+      - kill
 
-  # - name: run app as pm2 process
-  #   shell: cd /home/{{ansible_user}}/WebApp && pm2 start src/index.js
-  #   register: out
-  #   tags:
-  #     - run
+  - name: run app as pm2 process
+    shell: cd /home/{{ansible_user}}/WebApp && pm2 start src/index.js
+    register: out
+    tags:
+      - run
 
-  # - debug: var=out.stdout_lines
+  - debug: var=out.stdout_lines
 
 
-  # - name: save process to run at start app
-  #   shell: pm2 save
+  - name: save process to run at start app
+    shell: pm2 save
