@@ -13,11 +13,6 @@
   #     dest: /home/uriel/WebApp
   #     clone: yes
   #     update: yes
-  
-  - name: Recursively remove WebApp directory
-    ansible.builtin.file:
-      path: /home/{{ansible_user}}/WebApp
-      state: absent
 
   - name: Copy the artifact from master to machines
     copy: src={{code_path}} dest=/home/{{ansible_user}}
@@ -39,7 +34,7 @@
 
   - name: Install packages based on package.json using the npm
     npm:
-      path: /home/{{ansible_user}}/WebApp
+      path: /home/{{ansible_user}}/s
       state: present
 
   - name: add .env file
