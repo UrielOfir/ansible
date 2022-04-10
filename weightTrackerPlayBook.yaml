@@ -10,7 +10,7 @@
   # - name: Clone a github repository
   #   git:
   #     repo: https://github.com/UrielOfir/bootcamp-app
-  #     dest: /home/uriel/WebApp
+  #     dest: /home/uriel/s
   #     clone: yes
   #     update: yes
 
@@ -66,7 +66,7 @@
       OKTA_ORG_URL={{okta_url}}
       OKTA_CLIENT_ID={{okta_client_id}}
       OKTA_CLIENT_SECRET={{okta_client_secret}}
-      " > WebApp/.env;
+      " > s/.env;
     
     tags:
          - env
