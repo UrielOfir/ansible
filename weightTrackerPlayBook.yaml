@@ -15,7 +15,7 @@
   #     update: yes
 
   - name: install unzip
-    script:  |
+    script: |
       if ! command -v unzip; then
         apt-get update
         apt-get install unzip
